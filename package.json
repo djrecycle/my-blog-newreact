@@ -1,0 +1,15 @@
+{
+  "name": "my-blog-newreact",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm install --prefix api && npm install --prefix client && npm run build --prefix client",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run dev --prefix api",
+    "start2": "npm run preview --prefix client"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

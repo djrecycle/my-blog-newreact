@@ -14,6 +14,8 @@ export default defineConfig({
     proxy: {
       "/api": {
         target: "http://localhost:3001",
+        // "https://my-blog-react-yeio.vercel.app"
+        // "http://rraangga.infinityfreeapp.com",
         // target: "https://my-blog-react-yeio.vercel.app/",
         secure: false,
       },
@@ -31,6 +33,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      // "@/": path.resolve(__dirname, "./src/components"),
     },
   },
 });
