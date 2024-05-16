@@ -8,7 +8,7 @@ const require = createRequire(import.meta.url);
 export default defineConfig({
   build: {
     sourcemap: true,
-    // outDir: "dist",
+    outDir: "dist",
   },
   server: {
     proxy: {
