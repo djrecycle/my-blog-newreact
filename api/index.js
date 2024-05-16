@@ -33,6 +33,10 @@ app.listen(PORT, () => {
   console.log(`Server connect to ${PORT}`);
 });
 
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
 // routes
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
