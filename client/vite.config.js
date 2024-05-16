@@ -13,8 +13,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target:
-          "https://myblognewreact-p6ih0qxey-djrecycles-projects.vercel.app",
+        target: "myblognewreactapi-git-master-djrecycles-projects.vercel.app",
         // "http://localhost:3001",
         // "https://my-blog-react-yeio.vercel.app"
         // "http://rraangga.infinityfreeapp.com",
