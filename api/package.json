@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
-    "start": "node --env-file=config.env api",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

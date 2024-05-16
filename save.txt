@@ -1,0 +1,1 @@
+"start": "node --env-file=config.env api",
