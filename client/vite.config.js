@@ -19,8 +19,8 @@ export default defineConfig({
         // "https://my-blog-react-yeio.vercel.app"
         // "http://rraangga.infinityfreeapp.com",
         // target: "https://my-blog-react-yeio.vercel.app/",
-        secure: false,
-        // changeOrigin: true,
+        secure: true,
+        changeOrigin: true,
       },
     },
   },
