@@ -8,7 +8,7 @@
     "start": "npm-run-all -p preview",
     "dev": "npm run start --prefix api",
     "preview": "npm run preview --prefix client",
-    "build": "npm run build --prefix client"
+    "build": "npm install --prefix client"
   },
   "author": "",
   "license": "ISC",
