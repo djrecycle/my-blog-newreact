@@ -13,13 +13,13 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target:
-          "https://myblognewreact-36r5jhjao-djrecycles-projects.vercel.app",
+        target: "myblognewreactapi-djrecycles-projects.vercel.app",
         // "http://localhost:3001",
         // "https://my-blog-react-yeio.vercel.app"
         // "http://rraangga.infinityfreeapp.com",
         // target: "https://my-blog-react-yeio.vercel.app/",
         secure: false,
+        // changeOrigin: true,
       },
     },
   },
