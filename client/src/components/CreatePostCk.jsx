@@ -187,7 +187,7 @@ const CreatePostCk = () => {
 
   const generateContent = async (inputContent) => {
     try {
-      const response = await fetch("/api/generateai/ai/cont", {
+      const response = await fetch("/api/generateai/ai/content", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -197,7 +197,7 @@ const CreatePostCk = () => {
       if (!response.ok)
         throw new Error(`HTTP error! status: ${response.status}`);
       const data = await response.json();
-      // if (!response.ok) throw new Error(data.message);
+      if (!response.ok) throw new Error(data.message);
       return data.message; // Hasil konten dari AI
     } catch (error) {
       console.error("Failed to generate content:", error);
@@ -319,22 +319,6 @@ const CreatePostCk = () => {
                   <Progress value={imageUploadProgress} />
                 )}
               </div>
-            </div>
-
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="description">Description</Label>
-              <textarea
-                id="description"
-                placeholder="description"
-                className="p-2 text-black rounded-sm"
-                type="text"
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    description: e.target.value,
-                  })
-                }
-              />
             </div>
 
             <div className="flex flex-col space-y-1.5">
