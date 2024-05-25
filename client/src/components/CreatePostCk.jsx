@@ -187,7 +187,7 @@ const CreatePostCk = () => {
 
   const generateContent = async (inputContent) => {
     try {
-      const response = await fetch("/api/generateai/ai/content", {
+      const response = await fetch("/api/generateai/ai/cont", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
