@@ -23,6 +23,7 @@ import { Progress } from "@/components/ui/progress";
 import CKEditorText from "./CKEditorText";
 import { Loader2 } from "lucide-react";
 import { useSelector } from "react-redux";
+import { RiAiGenerate } from "react-icons/ri";
 
 const CreatePostCk = () => {
   const { currentUser } = useSelector((state) => state.user);
@@ -190,12 +191,13 @@ const CreatePostCk = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${currentUser.token}`, // Pastikan token tersedia
         },
         body: JSON.stringify({ content: inputContent }),
       });
+      if (!response.ok)
+        throw new Error(`HTTP error! status: ${response.status}`);
       const data = await response.json();
-      if (!response.ok) throw new Error(data.message);
+      // if (!response.ok) throw new Error(data.message);
       return data.message; // Hasil konten dari AI
     } catch (error) {
       console.error("Failed to generate content:", error);
@@ -237,6 +239,7 @@ const CreatePostCk = () => {
                   })
                 }
               />
+              <RiAiGenerate />
             </div>
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="aiInput">AI Input</Label>
