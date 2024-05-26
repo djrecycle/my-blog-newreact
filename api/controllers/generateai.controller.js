@@ -17,6 +17,7 @@ const getGroqChatCompletion = async (req) => {
       },
     ],
     model: "llama3-8b-8192",
+    language: "id",
   });
 };
 
