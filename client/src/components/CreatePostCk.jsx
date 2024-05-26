@@ -37,6 +37,7 @@ const CreatePostCk = () => {
   const [isAdding, setIsAdding] = useState(false);
   const [aiInput, setAiInput] = useState(""); // State untuk input AI
   const [aiOutput, setAiOutput] = useState("");
+  const [isGenerating, setIsGenerating] = useState(false); // State tambahan untuk loading
 
   const navigate = useNavigate();
 
@@ -197,6 +198,7 @@ const CreatePostCk = () => {
       if (!response.ok)
         throw new Error(`HTTP error! status: ${response.status}`);
       const data = await response.json();
+      console.log("Data message:", data.message);
       if (!response.ok) throw new Error(data.message);
       return data.message; // Hasil konten dari AI
     } catch (error) {
@@ -206,8 +208,11 @@ const CreatePostCk = () => {
   };
 
   const handleGenerateAIContent = async () => {
+    setIsGenerating(true); // Mulai loading
     const content = await generateContent(aiInput);
+    console.log({ content: content });
     setAiOutput(content); // Menyimpan hasil AI ke state
+    setIsGenerating(false); // Hentikan loading
   };
 
   if (isLoading)
@@ -250,8 +255,12 @@ const CreatePostCk = () => {
                 value={aiInput}
                 onChange={(e) => setAiInput(e.target.value)}
               />
-              <Button type="button" onClick={handleGenerateAIContent}>
-                Generate AI Content
+              <Button
+                type="button"
+                onClick={handleGenerateAIContent}
+                disabled={isGenerating}
+              >
+                {isGenerating ? "Generating..." : "Generate AI Content"}
               </Button>
             </div>
             {aiOutput && (
