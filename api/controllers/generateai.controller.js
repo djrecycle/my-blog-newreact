@@ -9,7 +9,7 @@ const getGroqChatCompletion = async (req) => {
       {
         role: "system",
         content:
-          "Buat konten blog dengan struktur berikut: Judul, Kategori, Deskripsi, dan Konten. Topik yang diinginkan adalah:",
+          "Buat konten blog dengan struktur berikut: Judul, Kategori, Deskripsi, dan Konten. Topik yang diinginkan adalah:(selalu dibuat dalam bahasa indonesia)",
       },
       {
         role: "user",
