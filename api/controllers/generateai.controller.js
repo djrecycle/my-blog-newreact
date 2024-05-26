@@ -7,8 +7,13 @@ const getGroqChatCompletion = async (req) => {
   return groq.chat.completions.create({
     messages: [
       {
+        role: "system",
+        content:
+          "Buat konten blog dengan struktur berikut: Judul, Kategori, Deskripsi, dan Konten. Topik yang diinginkan adalah:",
+      },
+      {
         role: "user",
-        content: req.body.content,
+        content: `Judul: ${req.body.title}\nKategori: ${req.body.category}\nDeskripsi: ${req.body.description}\nKonten: ${req.body.content}`,
       },
     ],
     model: "llama3-8b-8192",
