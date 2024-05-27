@@ -16,7 +16,7 @@ const getGroqChatCompletion = async (req) => {
         content: `Judul: ${req.body.title}\nKategori: ${req.body.category}\nDeskripsi: ${req.body.description}\nKonten: ${req.body.content}`,
       },
     ],
-    model: "llama3-8b-8192",
+    model: "llama3-70b-8192",
     language: "id",
   });
 };
