@@ -24,6 +24,7 @@ import CKEditorText from "./CKEditorText";
 import { Loader2 } from "lucide-react";
 import { useSelector } from "react-redux";
 import { RiAiGenerate } from "react-icons/ri";
+import AiPromptPopover from "@/components/AiPromptModal";
 
 const CreatePostCk = () => {
   const { currentUser } = useSelector((state) => state.user);
@@ -215,6 +216,11 @@ const CreatePostCk = () => {
     setIsGenerating(false); // Hentikan loading
   };
 
+  const handleGenerateContent = async (prompt, inputName) => {
+    const content = await generateContent(prompt);
+    setFormData((prev) => ({ ...prev, [inputName]: content }));
+  };
+
   if (isLoading)
     return (
       <div className="flex justify-center items-center pt-80">
@@ -237,6 +243,7 @@ const CreatePostCk = () => {
                 id="title"
                 placeholder="title"
                 type="text"
+                value={formData.title || ""}
                 onChange={(e) =>
                   setFormData({
                     ...formData,
@@ -244,7 +251,9 @@ const CreatePostCk = () => {
                   })
                 }
               />
-              <RiAiGenerate />
+              <AiPromptPopover
+                onGenerate={(prompt) => handleGenerateContent(prompt, "title")}
+              />
             </div>
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="aiInput">AI Input</Label>
