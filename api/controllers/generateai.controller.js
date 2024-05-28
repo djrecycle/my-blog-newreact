@@ -13,7 +13,7 @@ const getGroqChatCompletion = async (req) => {
       },
       {
         role: "user",
-        content: `Judul: ${req.body.title}\nKategori: ${req.body.category}\nDeskripsi: ${req.body.description}\nKonten: ${req.body.content}`,
+        content: `Konten: ${req.body.content}`,
       },
       {
         role: "system",
