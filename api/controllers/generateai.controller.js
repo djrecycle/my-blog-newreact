@@ -15,6 +15,33 @@ const getGroqChatCompletion = async (req) => {
         role: "user",
         content: `Judul: ${req.body.title}\nKategori: ${req.body.category}\nDeskripsi: ${req.body.description}\nKonten: ${req.body.content}`,
       },
+      {
+        role: "system",
+        content:
+          "Anda adalah asisten yang membantu yang akan menerima permintaan dalam Bahasa dan Anda akan menjawab kembali dalam Bahasa",
+      },
+      {
+        role: "user",
+        content: `Judul: ${req.body.title}`,
+      },
+      {
+        role: "system",
+        content:
+          "Anda adalah asisten yang membantu yang akan menerima permintaan dalam Bahasa dan Anda akan menjawab kembali dalam Bahasa",
+      },
+      {
+        role: "user",
+        content: `Kategori: ${req.body.category}`,
+      },
+      {
+        role: "system",
+        content:
+          "Anda adalah asisten yang membantu yang akan menerima permintaan dalam Bahasa dan Anda akan menjawab kembali dalam Bahasa",
+      },
+      {
+        role: "user",
+        content: `Deskripsi: ${req.body.description}`,
+      },
     ],
     model: "llama3-70b-8192",
   });

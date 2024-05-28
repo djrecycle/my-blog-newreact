@@ -39,6 +39,7 @@ const CreatePostCk = () => {
   const [aiInput, setAiInput] = useState(""); // State untuk input AI
   const [aiOutput, setAiOutput] = useState("");
   const [isGenerating, setIsGenerating] = useState(false); // State tambahan untuk loading
+  const [isTitleGenerated, setIsTitleGenerated] = useState(false); // State untuk mengetahui apakah judul di-generate atau tidak
 
   const navigate = useNavigate();
 
@@ -217,8 +218,27 @@ const CreatePostCk = () => {
   };
 
   const handleGenerateContent = async (prompt, inputName) => {
-    const content = await generateContent(prompt);
-    setFormData((prev) => ({ ...prev, [inputName]: content }));
+    if (inputName === "title") {
+      const content = await generateContent(prompt);
+      setFormData((prev) => ({ ...prev, [inputName]: content }));
+      setIsTitleGenerated(true);
+    } else {
+      setFormData((prev) => ({ ...prev, [inputName]: prompt }));
+    }
+
+    // Kirim data input ke backend
+    try {
+      await fetch("/api/generateai/ai/content", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ [inputName]: prompt }), // Kirim input sesuai dengan inputName
+      });
+    } catch (error) {
+      console.error("Failed to send input to backend:", error);
+      toast.error("Failed to send input to backend: " + error.message);
+    }
   };
 
   if (isLoading)
@@ -243,13 +263,14 @@ const CreatePostCk = () => {
                 id="title"
                 placeholder="title"
                 type="text"
-                value={formData.title || ""}
+                value={isTitleGenerated ? formData.title : ""}
                 onChange={(e) =>
                   setFormData({
                     ...formData,
                     title: e.target.value,
                   })
                 }
+                disabled={isTitleGenerated} // Menonaktifkan input jika judul di-generate
               />
               <AiPromptPopover
                 onGenerate={(prompt) => handleGenerateContent(prompt, "title")}
