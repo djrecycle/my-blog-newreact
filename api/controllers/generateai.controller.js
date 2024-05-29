@@ -17,12 +17,11 @@ const getGroqChatCompletion = async (req) => {
       },
       {
         role: "system",
-        content:
-          "Anda adalah asisten yang membantu yang akan menerima permintaan dalam Bahasa dan Anda akan menjawab kembali dalam Bahasa",
+        content: `Anda adalah asisten yang membantu yang akan menerima permintaan dalam Bahasa dan Anda akan menjawab kembali dalam Bahasa, jika "user" berisi content: ${req.body.title} maka anda akan menjawab atau memberikan Judul sesuai dengan permintaan "user"`,
       },
       {
         role: "user",
-        content: `Judul: ${req.body.title}`,
+        content: `Buatkan 1 judul blog artikel tentang: ${req.body.title}`,
       },
       {
         role: "system",
