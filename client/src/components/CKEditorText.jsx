@@ -110,7 +110,7 @@ export default function CKEditorText({ setFormData, formData }) {
           ],
 
           cloudServices: {
-            tokenUrl: `https://107180.cke-cs.com/token/dev/bb45727ab997decb393ca41204eab5ef596d4d01b3fc00ba69bce7a15551?limit=10`,
+            tokenUrl: `https://107180.cke-cs.com/token/dev/5ee4b304d7770742c2ee341886a2bceec8c192e37f9399971e1961c61cf7?limit=10`,
             uploadUrl: "https://107180.cke-cs.com/easyimage/upload/",
             withCredentials: false,
           },
@@ -122,19 +122,19 @@ export default function CKEditorText({ setFormData, formData }) {
               startIndex: true,
               reversed: true,
             },
-            // SimpleUpload: {
-            //   uploadUrl: "/api/post/create-image",
-            //   withCredentials: true,
+            SimpleUpload: {
+              uploadUrl: "/api/post/create-image",
+              withCredentials: false,
 
-            // Headers sent along with the XMLHttpRequest to the upload server.
-            // headers: {
-            //   "X-CSRF-TOKEN": document
-            //     .querySelector('meta[name="csrf-token"]')
-            //     .getAttribute("content"),
+              // Headers sent along with the XMLHttpRequest to the upload server.
+              headers: {
+                "X-CSRF-TOKEN": document
+                  .querySelector('meta[name="csrf-token"]')
+                  .getAttribute("content"),
 
-            //   Authorization: "Bearer <JSON Web Token>",
-            // },
-            // },
+                Authorization: "Bearer + <JSON Web Token>",
+              },
+            },
           },
         }}
         tag="textarea"

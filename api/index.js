@@ -8,6 +8,7 @@ import authRoutes from "./routes/auth.route.js";
 import postRoutes from "./routes/post.route.js";
 import categoryRoutes from "./routes/category.route.js";
 import commentRoutes from "./routes/comment.route.js";
+import generateAiRoutes from "./routes/generateai.route.js";
 
 dotenv.config();
 
@@ -33,12 +34,17 @@ app.listen(PORT, () => {
   console.log(`Server connect to ${PORT}`);
 });
 
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
 // routes
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/post", postRoutes);
 app.use("/api/categories", categoryRoutes);
 app.use("/api/comment", commentRoutes);
+app.use("/api/generateai", generateAiRoutes);
 
 app.use(express.static(path.join(__dirname, "/client/dist")));
 

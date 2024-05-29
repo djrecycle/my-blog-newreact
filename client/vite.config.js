@@ -8,14 +8,19 @@ const require = createRequire(import.meta.url);
 export default defineConfig({
   build: {
     sourcemap: true,
-    // outDir: "dist",
+    outDir: "./dist",
   },
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:3001",
+        target: "https://myblognewreactapi-djrecycles-projects.vercel.app",
+
+        // "http://localhost:3001",
+        // "https://my-blog-react-yeio.vercel.app"
+        // "http://rraangga.infinityfreeapp.com",
         // target: "https://my-blog-react-yeio.vercel.app/",
-        secure: false,
+        secure: true,
+        changeOrigin: true,
       },
     },
   },
@@ -31,6 +36,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      // "@/": path.resolve(__dirname, "./src/components"),
     },
   },
 });
